@@ -1,0 +1,46 @@
+<!--<input [formControl]="name">
+<input [formControl]="address">
+<input [formControl]="image">
+<input [formControl]="status">
+<input type="submit" value="Submit" (click)="add()">-->
+<div class="container">
+    <div class="row">
+        Add new album
+    </div>
+    <div class="row">
+        <form [formGroup]="album">
+            <div class="mb-3">
+                <label>Title:</label>
+                <input class="form-control" formControlName="title">
+            </div>
+            <div class="alert alert-danger" *ngIf="title!.invalid && (title!.touched || title!.dirty)">
+                <div *ngIf="title!.hasError('required')">Title is required!</div>
+                <div *ngIf="title!.hasError('pattern')">Le titre ne doit contenir que des lettres ou des chiffres!</div>
+            </div>
+            <div class="mb-3">
+                <label>Archived:</label>
+                <input class="form-control" formControlName="archived">
+            </div>
+            <div class="alert alert-danger" *ngIf="archived!.invalid && (archived!.touched || archived!.dirty)">
+                <div *ngIf="archived!.hasError('required')">Archived is required!</div>
+            </div>
+            <div class="mb-3">
+                <label>CoverPicture:</label>
+                <input class="form-control" formControlName="coverPicture">
+            </div>
+            <div class="alert alert-danger" *ngIf="coverPicture!.invalid && (coverPicture!.touched || coverPicture!.dirty)">
+                <div *ngIf="coverPicture!.hasError('minlength')">Name must have at least 5 characters!</div>
+            </div>
+            <div class="mb-3">
+                <label>Photo:</label>
+                <input class="form-control" formControlName="photo">
+            </div>
+            <div class="alert alert-danger" *ngIf="photo!.invalid && (photo!.touched || photo!.dirty)">
+                <div *ngIf="photo!.hasError('required')">Photo is required!</div>
+            </div>
+            <div class="mb-3">
+                <input type="submit" class="btn btn-outline-primary" (click)="add()" value="Add album" [disabled]="album.invalid">
+            </div>
+        </form>
+    </div>
+</div>
